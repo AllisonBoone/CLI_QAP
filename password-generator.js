@@ -34,7 +34,7 @@ const argv = require('yargs/yargs')(process.argv.slice(2))
   }).argv;
 
 //Allowable default characters.
-//Later Later edited in separate branch to add customizable option characters.
+//Later edited in separate branch to add customizable option characters.
 const characters = {
   lowerCase: 'abcdefghijklmnopqrstuvwxyz',
   upperCase: 'ABCDEFGHIJKLNMOPQRSTUVWXYZ',
@@ -43,7 +43,17 @@ const characters = {
 };
 
 //Function to create random password using password length and allowable characters.
-function generatedPassword(length) {
+//Later edited in separate branch to add customizable option password options (Allows for default of lower case letters).
+function generatedPassword(length, useUpperCase, useNumbers, useSymbols) {
+  let availableCharacters = characters.lowerCase;
+  if (useUpperCase) availableCharacters += characters.upperCase;
+  if (useNumbers) {
+    availableCharacters += characters.numbers;
+  }
+  if (useSymbols) {
+    availableCharacters += characters.symbols;
+  }
+
   let password = '';
   for (let i = 0; i < length; i++) {
     password += characters.charAt(
