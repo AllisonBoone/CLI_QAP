@@ -29,7 +29,7 @@ function generatedPassword(length) {
 }
 
 //Gets password length from the command line and then Generates password.
-const passwordLength = args.length;
+const passwordLength = argv.length;
 const password = generatedPassword(passwordLength);
 
 // Displays randomly generated password in the console.
