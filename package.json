@@ -1,0 +1,18 @@
+{
+  "name": "cli_qap",
+  "version": "1.0.0",
+  "main": "index.js",
+  "bin": {
+    "password-generator.js": "./password-generator"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Allison Boone",
+  "license": "ISC",
+  "description": "Password generator CLI",
+  "dependencies": {
+    "yargs": "^17.7.2"
+  }
+}
