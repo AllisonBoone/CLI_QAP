@@ -57,15 +57,25 @@ function generatedPassword(length, useUpperCase, useNumbers, useSymbols) {
   let password = '';
   for (let i = 0; i < length; i++) {
     password += characters.charAt(
-      Math.floor(Math.random() * characters.length)
+      Math.floor(Math.random() * availableCharacters.length)
     );
   }
   return password;
 }
 
 //Gets password length from the command line and then Generates password.
+//Later edited in separate branch to add customizable option characters to be included in command line.
 const passwordLength = argv.length;
-const password = generatedPassword(passwordLength);
+const includesUpperCase = argv.upperCase;
+const includesNumbers = argv.numbers;
+const includesSymbols = argv.symbols;
+
+const password = generatedPassword(
+  passwordLength,
+  includesUpperCase,
+  includesNumbers,
+  includesSymbols
+);
 
 // Displays randomly generated password in the console.
 console.log(`Randomly generated password: ${password}`);
