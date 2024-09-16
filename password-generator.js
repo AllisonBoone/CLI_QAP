@@ -70,6 +70,33 @@ const includesUppercase = argv.uppercase;
 const includesNumbers = argv.numbers;
 const includesSymbols = argv.symbols;
 
+//Validation for flag input
+const allowedFlags = [
+  'length',
+  'l',
+  'numbers',
+  'n',
+  'uppercase',
+  'u',
+  'symbols',
+  's',
+  'help',
+  'h',
+];
+Object.keys(argv).forEach((flag) => {
+  if (!allowedFlags.includes(flag) && flag !== '$0') {
+    console.error(`Error: Must use allowed flags`);
+    process.exit(1);
+  }
+});
+
+//Validation for length of password
+if (passwordLength < 8 || isNaN(passwordLength)) {
+  console.error('Error: Length of password needs to be 8 character or more.');
+  console.error('Error: Length of password needs to be a number.');
+  process.exit(1);
+}
+
 const password = generatePassword(
   passwordLength,
   includesUppercase,
