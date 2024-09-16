@@ -56,7 +56,7 @@ function generatedPassword(length, useUpperCase, useNumbers, useSymbols) {
 
   let password = '';
   for (let i = 0; i < length; i++) {
-    password += characters.charAt(
+    password += availableCharacters.charAt(
       Math.floor(Math.random() * availableCharacters.length)
     );
   }
