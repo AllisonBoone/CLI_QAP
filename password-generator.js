@@ -38,6 +38,8 @@ const argv = require('yargs/yargs')(process.argv.slice(2))
 const characters = {
   lowerCase: 'abcdefghijklmnopqrstuvwxyz',
   upperCase: 'ABCDEFGHIJKLNMOPQRSTUVWXYZ',
+  numbers: '1234567890',
+  symbols: '!@#$%^&*()_-+={}[]:;<>,.?/',
 };
 
 //Function to create random password using password length and allowable characters.
