@@ -5,7 +5,7 @@ const argv = require('yargs/yargs')(process.argv.slice(2))
 
   //Creating flags and default option (8 being default length of password).
   //Later edited in separate branch to add customizable options.
-  .usage('Usage: $0 [options')
+  .usage('Usage: $0 [options]')
   .help('h')
   .alias('h', 'help')
   .option('l', {
@@ -36,17 +36,17 @@ const argv = require('yargs/yargs')(process.argv.slice(2))
 //Allowable default characters.
 //Later edited in separate branch to add customizable option characters.
 const characters = {
-  lowerCase: 'abcdefghijklmnopqrstuvwxyz',
-  upperCase: 'ABCDEFGHIJKLNMOPQRSTUVWXYZ',
+  lowercase: 'abcdefghijklmnopqrstuvwxyz',
+  uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
   numbers: '1234567890',
   symbols: '!@#$%^&*()_-+={}[]:;<>,.?/',
 };
 
 //Function to create random password using password length and allowable characters.
 //Later edited in separate branch to add customizable option password options (Allows for default of lower case letters).
-function generatedPassword(length, useUpperCase, useNumbers, useSymbols) {
-  let availableCharacters = characters.lowerCase;
-  if (useUpperCase) availableCharacters += characters.upperCase;
+function generatePassword(length, useUppercase, useNumbers, useSymbols) {
+  let availableCharacters = characters.lowercase;
+  if (useUppercase) availableCharacters += characters.uppercase;
   if (useNumbers) {
     availableCharacters += characters.numbers;
   }
@@ -66,13 +66,13 @@ function generatedPassword(length, useUpperCase, useNumbers, useSymbols) {
 //Gets password length from the command line and then Generates password.
 //Later edited in separate branch to add customizable option characters to be included in command line.
 const passwordLength = argv.length;
-const includesUpperCase = argv.upperCase;
+const includesUppercase = argv.uppercase;
 const includesNumbers = argv.numbers;
 const includesSymbols = argv.symbols;
 
-const password = generatedPassword(
+const password = generatePassword(
   passwordLength,
-  includesUpperCase,
+  includesUppercase,
   includesNumbers,
   includesSymbols
 );
